@@ -96,9 +96,7 @@ macro_rules! pshufd {
             : "+X"(dst)
             : "x"(*%src), "i"($i)
             :
-            : "intel", "alignstack"
-            
-            );
+            : "intel", "alignstack");
         }
         dst
     }}
@@ -117,6 +115,16 @@ pub (crate) fn unpacklo_epi32(dst : &mut tezca64x2, src: $tezca64x2) {
         : "x" (*src)
         :
         : "intel", "alignstack");
-    }
+    
+ }
+}
 
+#[inline(always)]
+pub(crate) fn unpackhi_epi32(dst: &mut, src: &tezca64x2) {
+    unsafe {
+        asm! ("punpckhdq $0 , $1"
+        :
+        :
+        :)
+    }
 }
